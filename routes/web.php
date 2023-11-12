@@ -18,7 +18,16 @@ Route::get('/home', function () {
 });
 
 Route::get('/notas', function () {
-   return view('notes.index');
+   $notes = [
+       'Primera nota',
+       'Segunda nota',
+       'Tercera nota',
+       'Cuarta nota',
+       'Quinta nota',
+       '<script>alert("Código malicioso")</script>',
+   ];
+
+   return view('notes.index')->with('notes', $notes);
 });
 
 Route::get('/notas/{id}', function ($id) {
