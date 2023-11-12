@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'App de notas')</title>
+    <title>{{ $title ?? 'App de notas' }}</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -28,7 +28,7 @@
             </ul>
         </nav>
     </header>
-    @yield('content')
+    {{ $slot }}
     <footer class="foot">
         <div class="ad">
             <p>
@@ -37,7 +37,7 @@
             </p>
         </div>
         <div class="license">
-            <p>© 2019 Derechos Reservados - Styde Limited</p>
+            <p>© {{ $currentYear }} Derechos Reservados - Styde Limited</p>
         </div>
     </footer>
 </div>

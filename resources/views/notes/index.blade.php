@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<x-layout>
+        <x-slot:title>Listado de notas</x-slot:title>
 
-@section('title', 'Listado de notas')
-
-@section('content')
         <main class="content">
             <div class="cards">
                 @forelse($notes as $note)
@@ -177,4 +175,4 @@
                 </div>
             </div>
         </main>
-@endsection
+</x-layout>
