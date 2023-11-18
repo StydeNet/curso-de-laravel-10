@@ -28,30 +28,19 @@ Route::get('/notas', function () {
    ];
 
    return view('notes.index')->with('notes', $notes);
-});
+})->name('notes.index');
 
 Route::get('/notas/{id}', function ($id) {
     return 'Detalle de la nota: '.$id;
-});
+})->name('notes.view');
 
 Route::get('/notas/crear', function () {
    return view('notes.create');
-});
+})->name('notes.create');
 
 Route::get('/notas/{id}/editar', function ($id) {
     return 'Editar nota: '.$id;
-});
-
-Route::get('cursos', function () {
-    return [
-        'Cursos' => [
-            'Curso de Laravel 10',
-            'Curso de programación orientada a objetos',
-            'Curso de Git',
-        ]
-    ];
-});
-
+})->name('notes.edit');
 
 
 
