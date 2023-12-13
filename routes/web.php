@@ -31,6 +31,8 @@ Route::post('/notas', [NoteController::class, 'store'])->name('notes.store');
 
 Route::get('/notas/{id}/editar', [NoteController::class, 'edit'])->name('notes.edit');
 
+Route::put('/notas/{id}', [NoteController::class, 'update'])->name('notes.update');
+
 
 
 

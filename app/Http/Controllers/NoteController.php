@@ -47,6 +47,11 @@ class NoteController
     {
         $note = Note::findOrFail($id);
 
-        return 'Editar nota: '.$note->title;
+        return view('notes.edit', ['note' => $note]);
+    }
+
+    public function update($id)
+    {
+        dd("Updating: $id");
     }
 }
