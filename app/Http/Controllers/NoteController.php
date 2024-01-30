@@ -67,11 +67,15 @@ class NoteController
         return to_route('notes.index');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $note = Note::findOrFail($id);
 
         $note->delete();
+
+        if ($request->ajax()) {
+            return response()->noContent();
+        }
 
         return to_route('notes.index');
     }
