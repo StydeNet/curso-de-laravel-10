@@ -5,6 +5,8 @@ namespace App\View\Components;
 use App\Models\Note;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 class NoteCard extends Component
@@ -24,5 +26,12 @@ class NoteCard extends Component
         return view('components.note-card', [
             'editUrl' => route('notes.edit', ['id' => $this->note->id]),
         ]);
+    }
+
+    public function renderContent(): HtmlString
+    {
+        return new HtmlString(Str::markdown($this->note->content, [
+            'html_input' => 'escape',
+        ]));
     }
 }

@@ -3,7 +3,7 @@
         <h4>{{ $note->title }}</h4>
 
         <p>
-            {{ $note->content }}
+            {{ $renderContent }}
         </p>
     </div>
 
