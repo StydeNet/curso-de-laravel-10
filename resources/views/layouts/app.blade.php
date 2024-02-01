@@ -42,6 +42,6 @@
     </footer>
 </div>
 
-{{ $javascript ?? '' }}
+@stack('scripts')
 </body>
 </html>

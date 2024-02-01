@@ -10,9 +10,4 @@ class Note extends Model
     use SoftDeletes;
 
     protected $fillable = ['title', 'content'];
-
-    public function editUrl()
-    {
-        return route('notes.edit', ['id' => $this->id]);
-    }
 }
