@@ -37,4 +37,3 @@ Route::delete('/notas/{id}', [NoteController::class, 'destroy'])->name('notes.de
 
 
 
-

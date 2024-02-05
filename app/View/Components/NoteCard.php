@@ -25,6 +25,7 @@ class NoteCard extends Component
     {
         return view('components.note-card', [
             'editUrl' => route('notes.edit', ['id' => $this->note->id]),
+            'size' => $this->determineSize($this->note->content),
         ]);
     }
 
@@ -33,5 +34,31 @@ class NoteCard extends Component
         return new HtmlString(Str::markdown($this->note->content, [
             'html_input' => 'escape',
         ]));
+    }
+
+    private function determineSize(string $content): string
+    {
+        preg_match_all("/```(.+?)```/s", $content, $matches);
+
+        if (count($matches[0]) === 0) {
+            return "small";
+        }
+
+        $maxLength = collect($matches[1])
+            ->flatMap(function ($block) {
+                return explode(PHP_EOL, $block);
+            })
+            ->map(fn($line) => strlen($line))
+            ->max();
+
+        if ($maxLength > 40) {
+            return "big";
+        }
+
+        if ($maxLength > 30) {
+            return "medium";
+        }
+
+        return "small";
     }
 }
